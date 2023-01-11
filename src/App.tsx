@@ -1,25 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { RecoilRoot } from 'recoil';
+import { ChakraProvider, Box, theme, Heading, Flex } from "@chakra-ui/react"
+import TodoList from './components/TodoList';
+import ItemCreator from './components/ItemCreator';
+import DisplaySelector from './components/DisplaySelector';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <RecoilRoot>
+      <ChakraProvider theme={theme}>
+        <Flex flexDirection='column' fontSize="xl" gridGap={2}>
+          <Box p={8} h={24} w={"full"} display="flex" alignItems='center' bg="teal.400">
+            <Heading>Todo</Heading>
+          </Box>
+          <Box px={4}>
+            <Box>
+              <DisplaySelector />
+            </Box>
+            <Box>
+              <ItemCreator />
+            </Box>
+            <Box>
+              <TodoList />
+            </Box>
+          </Box>
+        </Flex>
+      </ChakraProvider>
+    </RecoilRoot>
   );
 }
 
