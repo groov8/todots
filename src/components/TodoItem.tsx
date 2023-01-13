@@ -1,16 +1,17 @@
 import { useRecoilState } from 'recoil';
 import { todo } from '../atom';
-import { Box, Flex, Button, Text } from '@chakra-ui/react';
+import { Box, Button, Text } from '@chakra-ui/react';
+import type {Todo} from '../types/Todo';
 
-const TodoItem = ({ item }) => {
+const TodoItem = (item: Todo) => {
     const [todoList, setTodoList] = useRecoilState(todo);
     const index = todoList.findIndex((target) => target.id === item.id);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         Itemstate(e.target.value);
     };
 
-    const Itemstate = (newState) => {
+    const Itemstate = (newState: any) => {
         const newTodoList = [
             ...todoList.slice(0, index),
             { ...item, state: newState },

@@ -4,7 +4,7 @@ import { filter } from '../atom';
 const DisplaySelector = () => {
   const [Filter, setFilter] = useRecoilState(filter);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newFilter = {...Filter, state: e.target.value};
     setFilter(newFilter);
   };
